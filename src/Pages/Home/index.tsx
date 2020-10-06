@@ -120,7 +120,7 @@ export default function Home() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [open, setOpen] = React.useState(false);
-  const [link, setlink] = React.useState('http://oyan/rando-no1');
+  const [link] = React.useState('http://oyan/rando-no1');
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
