@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core/styles';
 import image1 from './assets/1.png';
 import logo from './assets/logo.png';
+import logo2 from './assets/logo2.png';
 import styled from 'styled-components';
 import WindowSize from '@reach/window-size';
 import './home.css';
@@ -30,8 +31,18 @@ const Wrapper = styled.div`
   flex-direction: row;
 `;
 
-const Right = styled.div`
-  flex: 1.5;
+const Wrapper2 = styled.div`
+  display: flex;
+  height: 100vh;
+  flex: 1;
+  width: 100vw;
+  padding-left: 2em;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const Left = styled.div`
+  flex: 1;
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -43,26 +54,31 @@ const Right = styled.div`
   padding-bottom: 60px;
 `;
 
-const Left = styled.div`
+const Right = styled.div`
   flex: 1;
   display: flex;
   padding-right: 3em;
+  padding-bottom: 5em;
+  padding-top: 7em;
   height: 100vh;
   width: 100vw;
+  background-color: #4d44aa;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
 `;
-
+type TextProps = {
+  mobile: string;
+};
 const H1 = styled.h1`
-  font-size: 2.5em;
+  font-size: ${({ mobile }: TextProps) => mobile};
   font-weight: bold;
   font-family: 'Comfortaa', cursive;
 `;
 
 const H2 = styled.h2`
   padding-top: 1em;
-  font-size: 1.5em;
+  font-size: ${({ mobile }: TextProps) => mobile};
   font-weight: light;
   color: grey;
   font-family: 'Comfortaa', cursive;
@@ -175,9 +191,9 @@ export default function Home() {
         {({ width, height }) =>
           width > 550 ? (
             <Wrapper>
-              <Right>
-                <H1>Aboii how you wan take yan the matter</H1>
-                <H2>na area matter ?</H2>
+              <Left>
+                <H1 mobile='2.5em'>Aboii how you wan take yan the matter</H1>
+                <H2 mobile='1.5em'>na area matter ?</H2>
                 <button
                   aria-controls='simple-menu'
                   aria-haspopup='true'
@@ -219,7 +235,7 @@ export default function Home() {
                 >
                   {body}
                 </Modal>
-                <H2>abi na inside yan ?</H2>
+                <H2 mobile='1.5em'>abi na inside yan ?</H2>
                 <div
                   style={{
                     display: 'flex',
@@ -238,8 +254,8 @@ export default function Home() {
                   </span>{' '}
                   about Oyan
                 </P>
-              </Right>
-              <Left>
+              </Left>
+              <Right>
                 <img
                   style={{
                     top: 0,
@@ -253,16 +269,119 @@ export default function Home() {
                   width={180}
                   height={80}
                 />
-                <img
-                  src={image1}
-                  alt='face'
-                  width={width * 0.35}
-                  height={height * 0.5}
-                />
-              </Left>
+                <div
+                  style={{
+                    display: 'flex',
+                    boxShadow:
+                      ' 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)',
+                    height: '100%',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <img
+                    src={image1}
+                    alt='face'
+                    width={width * 0.35}
+                    height={height * 0.5}
+                  />
+                </div>
+              </Right>
             </Wrapper>
           ) : (
-            <></>
+            <>
+              <img
+                style={{
+                  top: 0,
+                  position: 'absolute',
+                  right: 0,
+                  marginRight: 10,
+                  marginTop: 12,
+                }}
+                src={logo2}
+                alt='face'
+                width={130}
+                height={60}
+              />
+              <Wrapper2>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <img
+                    src={image1}
+                    alt='face'
+                    width={width * 0.6}
+                    height={height * 0.5}
+                  />
+                </div>
+                <H1 mobile='1.5em'>Aboii how you wan take yan the matter</H1>
+                <H2 mobile='1em'>na area matter ?</H2>
+                <button
+                  aria-controls='simple-menu'
+                  aria-haspopup='true'
+                  onClick={handleClick}
+                  className='btn btn1'
+                >
+                  New Chat
+                </button>
+                <StyledMenu
+                  id='simple-menu'
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleOpen}>
+                    <ListItemIcon>
+                      <Link fontSize='small' />
+                    </ListItemIcon>
+                    <ListItemText primary='Get a chat link to share' />
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <ListItemIcon>
+                      <Add fontSize='small' />
+                    </ListItemIcon>
+                    <ListItemText primary='Create instant chat room' />
+                  </MenuItem>
+                </StyledMenu>
+                <Modal
+                  open={open}
+                  onClose={handleCloseModal}
+                  aria-labelledby='simple-modal-title'
+                  aria-describedby='simple-modal-description'
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  {body}
+                </Modal>
+                <H2 mobile='1em'>abi na inside yan ?</H2>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    width: '70%',
+                  }}
+                >
+                  <button className='btn btn1' style={{ marginRight: 5 }}>
+                    Login
+                  </button>
+                  <button className='btn btn2'>join</button>
+                </div>
+                <P>
+                  <span style={{ color: '#4d44aa', fontWeight: 'bold' }}>
+                    Learn more
+                  </span>{' '}
+                  about Oyan
+                </P>
+              </Wrapper2>
+            </>
           )
         }
       </WindowSize>
