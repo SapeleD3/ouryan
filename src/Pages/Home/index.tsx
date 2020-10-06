@@ -18,10 +18,11 @@ import IconButton from '@material-ui/core/IconButton';
 
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Link from '@material-ui/icons/Link';
+import LinkIcon from '@material-ui/icons/Link';
 import Add from '@material-ui/icons/Add';
 import Modal from '@material-ui/core/Modal';
 import copy from 'copy-text-to-clipboard';
+import Button from '../../Components/Button';
 
 const Wrapper = styled.div`
   display: flex;
@@ -175,7 +176,7 @@ export default function Home() {
           aria-label='copy link'
           onClick={copyCodeToClipboard}
         >
-          <Link />
+          <LinkIcon />
         </IconButton>
       </LinkDisplay>
       <P3 id='simple-modal-description'>
@@ -211,7 +212,7 @@ export default function Home() {
                 >
                   <MenuItem onClick={handleOpen}>
                     <ListItemIcon>
-                      <Link fontSize='small' />
+                      <LinkIcon fontSize='small' />
                     </ListItemIcon>
                     <ListItemText primary='Get a chat link to share' />
                   </MenuItem>
@@ -243,10 +244,9 @@ export default function Home() {
                     width: '70%',
                   }}
                 >
-                  <button className='btn btn1' style={{ marginRight: 5 }}>
-                    Login
-                  </button>
-                  <button className='btn btn2'>join</button>
+                  <Button text='Login' className='btn btn1' link='/login' />
+                  <div style={{ margin: 5 }}></div>
+                  <Button text='join' className='btn btn2' link='/login' />
                 </div>
                 <P>
                   <span style={{ color: '#4d44aa', fontWeight: 'bold' }}>
@@ -337,7 +337,7 @@ export default function Home() {
                 >
                   <MenuItem onClick={handleOpen}>
                     <ListItemIcon>
-                      <Link fontSize='small' />
+                      <LinkIcon fontSize='small' />
                     </ListItemIcon>
                     <ListItemText primary='Get a chat link to share' />
                   </MenuItem>
@@ -369,10 +369,9 @@ export default function Home() {
                     width: '70%',
                   }}
                 >
-                  <button className='btn btn1' style={{ marginRight: 5 }}>
-                    Login
-                  </button>
-                  <button className='btn btn2'>join</button>
+                  <Button text='Login' className='btn btn1' />
+                  <div style={{ margin: 5 }}></div>
+                  <Button text='Join' className='btn btn2' />
                 </div>
                 <P>
                   <span style={{ color: '#4d44aa', fontWeight: 'bold' }}>

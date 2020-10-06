@@ -47,7 +47,7 @@ const Right = styled.div`
   flex-direction: column;
 `;
 
-export default function Login() {
+export default function SignUp() {
   return (
     <div>
       <WindowSize>
