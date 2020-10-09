@@ -246,7 +246,7 @@ export default function Home() {
                 >
                   <Button text='Login' className='btn btn1' link='/login' />
                   <div style={{ margin: 5 }}></div>
-                  <Button text='join' className='btn btn2' link='/login' />
+                  <Button text='join' className='btn btn2' link='/signup' />
                 </div>
                 <P>
                   <span style={{ color: '#4d44aa', fontWeight: 'bold' }}>
@@ -369,9 +369,9 @@ export default function Home() {
                     width: '70%',
                   }}
                 >
-                  <Button text='Login' className='btn btn1' />
+                  <Button text='Login' className='btn btn1' link='/login' />
                   <div style={{ margin: 5 }}></div>
-                  <Button text='Join' className='btn btn2' />
+                  <Button text='Join' className='btn btn2' link='/signup' />
                 </div>
                 <P>
                   <span style={{ color: '#4d44aa', fontWeight: 'bold' }}>
