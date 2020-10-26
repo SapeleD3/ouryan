@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import WindowSize from '@reach/window-size';
 import styled from 'styled-components';
 import { Wrapper3 } from '../../styles/globals';
@@ -18,6 +18,8 @@ const ChatInput = styled.div`
   border: 1px solid #4d44aa;
   width: 90%;
   padding: 6px 15px;
+  bottom: 0;
+  position: 'absolute';
   border-radius: 30px;
   margin-left: 1em;
   margin-bottom: 10px;
@@ -82,6 +84,48 @@ const initialMessage = [
     sentAt: new Date(),
     read: false,
   },
+  {
+    user: 2,
+    name: 'joseph',
+    message: 'aboi i hear say you they hold back on that cash',
+    sentAt: new Date(),
+    read: false,
+  },
+  {
+    user: 2,
+    name: 'joseph',
+    message: 'answer me na i know say you they read my chat',
+    sentAt: new Date(),
+    read: false,
+  },
+  {
+    user: 1,
+    name: 'Moses',
+    message: 'aboi wida you na',
+    sentAt: new Date(),
+    read: false,
+  },
+  {
+    user: 2,
+    name: 'joseph',
+    message: 'aboi i hear say you they hold back on that cash',
+    sentAt: new Date(),
+    read: false,
+  },
+  {
+    user: 2,
+    name: 'joseph',
+    message: 'answer me na i know say you they read my chat',
+    sentAt: new Date(),
+    read: false,
+  },
+  {
+    user: 1,
+    name: 'Moses',
+    message: 'aboi wida you na',
+    sentAt: new Date(),
+    read: false,
+  },
 ];
 
 const name = 'joseph Hugh';
@@ -97,6 +141,13 @@ const getInitials = (name: string): string => {
 };
 export default function Chat() {
   const [message] = useState(initialMessage);
+  const messagesEndRef: any = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(scrollToBottom, [message]);
   return (
     <WindowSize>
       {({ width, height }) =>
@@ -106,25 +157,28 @@ export default function Chat() {
           <TabDesktop screen={2} />
         ) : (
           <>
-            <img
-              style={{
-                top: 0,
-                position: 'absolute',
-                right: 0,
-                marginRight: 10,
-                marginTop: 12,
-              }}
-              src={logo2}
-              alt='face'
-              width={130}
-              height={60}
-            />
             <Wrapper3>
               <div
                 style={{
                   display: 'flex',
+                  background: 'white',
+                  top: 0,
+                  width: '100%',
+                  position: 'absolute',
                 }}
               >
+                <img
+                  style={{
+                    top: 0,
+                    position: 'absolute',
+                    right: 0,
+                    marginTop: 12,
+                  }}
+                  src={logo2}
+                  alt='face'
+                  width={130}
+                  height={60}
+                />
                 <div
                   style={{
                     display: 'flex',
@@ -180,6 +234,7 @@ export default function Chat() {
               <div
                 style={{
                   flex: 1,
+                  overflow: 'auto',
                   paddingLeft: 20,
                   paddingRight: 20,
                 }}
@@ -224,9 +279,15 @@ export default function Chat() {
                     </div>
                   </div>
                 ))}
+                <div ref={messagesEndRef} />
               </div>
 
-              <div style={{ display: 'flex', marginTop: 10 }}>
+              <div
+                style={{
+                  display: 'flex',
+                  marginTop: 10,
+                }}
+              >
                 <ChatInput>
                   <Input2 placeholder='message..' />
                   <IconButton
