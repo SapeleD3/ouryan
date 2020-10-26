@@ -6,6 +6,7 @@ export const ROUTES = {
   LOGIN: '/login',
   WILD_CARD: '/*',
   SIGNUP: '/signup',
+  ANON_CHAT: '/chat',
 };
 
 export const OPEN_ROUTES = [
@@ -16,6 +17,10 @@ export const OPEN_ROUTES = [
   {
     url: ROUTES.SIGNUP,
     page: lazy(() => import('../Pages/signup')),
+  },
+  {
+    url: ROUTES.ANON_CHAT,
+    page: lazy(() => import('../Pages/Chat')),
   },
 ];
 

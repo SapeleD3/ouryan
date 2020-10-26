@@ -5,24 +5,7 @@ import logo2 from './assets/logo2.png';
 import styled from 'styled-components';
 import WindowSize from '@reach/window-size';
 import FormInput from './FormInput';
-
-const Wrapper = styled.div`
-  display: flex;
-  height: 100vh;
-  flex: 1;
-  width: 100vw;
-  flex-direction: row;
-`;
-
-const Wrapper2 = styled.div`
-  display: flex;
-  height: 100vh;
-  flex: 1;
-  width: 100vw;
-  padding-left: 2em;
-  flex-direction: column;
-  justify-content: center;
-`;
+import { Wrapper, Wrapper2 } from '../../styles/globals';
 
 const Left = styled.div`
   flex: 1;

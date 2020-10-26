@@ -12,6 +12,7 @@ const Input = styled.input`
   font-size: 15px;
   font-family: 'Comfortaa', cursive;
   padding: 6px 12px;
+  outline: none;
 `;
 const Wrapper = styled.div`
   display: flex;
